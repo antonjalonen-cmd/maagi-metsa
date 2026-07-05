@@ -47,6 +47,9 @@
   --color-ink-300: #9A9078;
 
   /* ---- Semantic tokens ---------------------------------------------------- */
+  /* Cream is the dominant ground throughout — dark forest green is reserved
+     for the footer and one CTA band only, so the site reads as a warm,
+     daylight farm site rather than a dark/neon one. */
   --color-bg: var(--color-herd-050);
   --color-bg-alt: var(--color-meadow-200);
   --color-bg-forest: var(--color-forest-900);
@@ -57,13 +60,14 @@
   --color-text-on-dark-muted: #CDD3BE;
   --color-brand: var(--color-forest-700);
   --color-brand-dark: var(--color-forest-950);
-  --color-accent: var(--color-gold-600);
-  --color-accent-dark: var(--color-gold-700);
+  --color-accent: var(--color-barn-600);
+  --color-accent-dark: var(--color-barn-700);
   --color-accent-light: var(--color-gold-200);
+  --color-gold: var(--color-gold-600);
   --color-barn: var(--color-barn-600);
   --color-meadow: var(--color-meadow-600);
   --color-border: #DCD5B8;
-  --color-focus: var(--color-gold-700);
+  --color-focus: var(--color-barn-700);
 
   /* Aliases kept for shared-pattern compatibility (see feedback memory) --- */
   --color-sage-100: var(--color-meadow-200);

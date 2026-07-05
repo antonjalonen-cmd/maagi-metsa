@@ -45,15 +45,6 @@
     });
   });
 
-  /* ---- Spotlight cards: cursor-tracked glow -------------------------------- */
-  document.querySelectorAll('.value-card').forEach(function (card) {
-    card.addEventListener('pointermove', function (e) {
-      var r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
-
   /* ---- Scroll-reveal animation --------------------------------------------- */
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -72,8 +63,10 @@
       });
     });
 
-    gsap.utils.toArray('.hero-blob').forEach(function (blob, i) {
-      gsap.to(blob, { yPercent: 14 * (i % 2 === 0 ? 1 : -1), ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.hero-media img', {
+      yPercent: 10,
+      ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
     });
   }
 
