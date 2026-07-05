@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Vuohitila "Maagi Metsä" — Design Tokens
+   Derived from: the farm's real red timber cottage at Alasuurintie 48
+   (Ingermansby, Lapinjärvi), the deep spruce/birch forest ringing the home
+   meadow, the buttercup-yellow-green summer pasture the goat herd grazes,
+   the black/white/grey/chestnut coats across the herd, and the warm gold
+   serif lettering the farm already uses on its own illustrated Facebook
+   cover art ("Maagi Metsä" wordmark on dark forest green).
+   ========================================================================== */
+
+:root {
+  /* ---- Color: Forest (the spruce/birch treeline behind the home meadow) - */
+  --color-forest-950: #0E1710;
+  --color-forest-900: #142117;
+  --color-forest-800: #1B2E20;
+  --color-forest-700: #26422E;
+  --color-forest-600: #355C3D;
+  --color-forest-500: #4B7852;
+
+  /* ---- Color: Meadow (the buttercup summer pasture the herd grazes) ----- */
+  --color-meadow-600: #71872C;
+  --color-meadow-500: #8DA23C;
+  --color-meadow-300: #BFCB84;
+  --color-meadow-200: #E7E9CD;
+
+  /* ---- Color: Barn (the real falu-red timber cottage on the home yard) -- */
+  --color-barn-700: #5C1D18;
+  --color-barn-600: #7A2A22;
+  --color-barn-500: #96392E;
+
+  /* ---- Color: Gold (the farm's own cover-art wordmark lettering) -------- */
+  --color-gold-700: #8C6B24;
+  --color-gold-600: #B08A3C;
+  --color-gold-500: #D3AE5C;
+  --color-gold-200: #F2E4BE;
+
+  /* ---- Color: Herd (coats across the goat herd: cream, ash, chestnut) --- */
+  --color-herd-050: #FAF7EC;
+  --color-herd-100: #F2ECD9;
+  --color-herd-400: #8B8578;
+  --color-herd-700: #493A2C;
+
+  /* ---- Color: Ink (warm near-black, softer than pure black) ------------ */
+  --color-ink-900: #171308;
+  --color-ink-700: #362C1E;
+  --color-ink-500: #675C48;
+  --color-ink-300: #9A9078;
+
+  /* ---- Semantic tokens ---------------------------------------------------- */
+  --color-bg: var(--color-herd-050);
+  --color-bg-alt: var(--color-meadow-200);
+  --color-bg-forest: var(--color-forest-900);
+  --color-surface: #FFFFFF;
+  --color-text: var(--color-ink-900);
+  --color-text-muted: var(--color-ink-500);
+  --color-text-on-dark: var(--color-herd-050);
+  --color-text-on-dark-muted: #CDD3BE;
+  --color-brand: var(--color-forest-700);
+  --color-brand-dark: var(--color-forest-950);
+  --color-accent: var(--color-gold-600);
+  --color-accent-dark: var(--color-gold-700);
+  --color-accent-light: var(--color-gold-200);
+  --color-barn: var(--color-barn-600);
+  --color-meadow: var(--color-meadow-600);
+  --color-border: #DCD5B8;
+  --color-focus: var(--color-gold-700);
+
+  /* Aliases kept for shared-pattern compatibility (see feedback memory) --- */
+  --color-sage-100: var(--color-meadow-200);
+  --color-wood-700: var(--color-forest-700);
+  --color-wood-900: var(--color-forest-950);
+  --color-pine-600: var(--color-forest-600);
+  --color-pine-900: var(--color-forest-950);
+
+  /* Scrim for text-over-photo legibility ---------------------------------- */
+  --scrim-dark: linear-gradient(180deg, rgba(10,14,9,0.10) 0%, rgba(9,13,8,0.58) 55%, rgba(8,11,7,0.92) 100%);
+  --scrim-dark-flat: rgba(11,15,9,0.56);
+  --scrim-top: linear-gradient(180deg, rgba(9,13,8,0.5) 0%, rgba(9,13,8,0) 42%);
+  --scrim-side: linear-gradient(100deg, rgba(9,13,8,0.7) 0%, rgba(9,13,8,0.25) 45%, rgba(9,13,8,0) 70%);
+
+  /* ---- Typography --------------------------------------------------------- */
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.875rem;
+  --fs-sm: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.5rem;
+  --fs-3xl: 3.25rem;
+  --fs-4xl: 4.5rem;
+  --fs-5xl: 5.75rem;
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.3;
+  --lh-normal: 1.62;
+
+  --ls-wide: 0.12em;
+  --ls-wider: 0.2em;
+
+  /* ---- Spacing (8px rhythm) ------------------------------------------------ */
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4.5rem;
+  --space-8: 6rem;
+  --space-9: 9rem;
+
+  /* ---- Radius / elevation --------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 1px 2px rgba(14,23,16,0.08), 0 8px 24px rgba(14,23,16,0.12);
+  --shadow-lift: 0 4px 12px rgba(14,23,16,0.12), 0 24px 56px rgba(14,23,16,0.24);
+  --shadow-glow: 0 0 0 1px rgba(211,174,92,0.18), 0 20px 60px rgba(14,23,16,0.35);
+
+  /* ---- Motion --------------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur-med: 320ms;
+  --dur-slow: 620ms;
+
+  --container-max: 1280px;
+}
