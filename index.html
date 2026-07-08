@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-lang-fi="Vuohitila Maagi Metsä — Lapinjärvi, Uusimaa" data-lang-sv="Getgård Maagi Metsä — Lappträsk, Nyland" data-lang-en="Maagi Metsä Goat Farm — Lapinjärvi, Uusimaa">Vuohitila Maagi Metsä — Lapinjärvi, Uusimaa</title>
+  <meta name="description" content="Vuohitila Maagi Metsä — suomalaisia vuohia, luomutuotteita ja maatilamajoitusta Lapinjärvellä, Uudellamaalla.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700;800&family=Archivo:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --night:   #1a2818;
+      --bark:    #5a3e28;
+      --sage:    #6aac50;
+      --sage-lt: #92c87a;
+      --gold:    #c8a040;
+      --gold-lt: #e8c870;
+      --cream:   #f4efe4;
+      --cream-dk:#ebe4d4;
+      --mist:    #d0cfc4;
+      --white:   #ffffff;
+
+      --font-display: 'Eczar', Georgia, serif;
+      --font-body:    'Archivo', system-ui, sans-serif;
+
+      --r-card:   12px;
+      --r-circle: 50%;
+      --r-btn:    6px;
+
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--night); background: var(--cream); overflow-x: hidden; }
+
+    /* LANGUAGE SYSTEM */
+    body.lang-sv .lang-fi,
+    body.lang-sv .lang-en,
+    body.lang-en .lang-fi,
+    body.lang-en .lang-sv,
+    body.lang-fi .lang-sv,
+    body.lang-fi .lang-en { display: none !important; }
+
+    .lang-fi, .lang-sv, .lang-en { display: inherit; }
+    .i18n-block { display: block; }
+    body.lang-sv .i18n-block.lang-sv,
+    body.lang-en .i18n-block.lang-en,
+    body.lang-fi .i18n-block.lang-fi { display: block; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    }
+    nav.solid {
+      background: var(--cream);
+      box-shadow: 0 1px 0 rgba(26,40,24,0.08);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.7rem; text-decoration: none;
+    }
+    .nav-logo img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+    .nav-wordmark {
+      font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+      color: var(--white); letter-spacing: 0.02em;
+      transition: color 0.4s;
+    }
+    nav.solid .nav-wordmark { color: var(--night); }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-family: var(--font-body); font-size: 0.875rem; font-weight: 500;
+      text-decoration: none; color: rgba(255,255,255,0.9);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color 0.3s, opacity 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+    nav.solid .nav-links a { color: var(--night); }
+    nav.solid .nav-links a:hover { color: var(--sage); }
+
+    .lang-btns { display: flex; gap: 0.35rem; }
+    .lang-btn {
+      background: none; border: 1px solid rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.8); font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.08em; padding: 0.25rem 0.5rem; border-radius: 3px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .lang-btn:hover, .lang-btn.active { background: var(--gold); border-color: var(--gold); color: var(--night); }
+    nav.solid .lang-btn { border-color: var(--mist); color: var(--bark); }
+    nav.solid .lang-btn:hover, nav.solid .lang-btn.active { background: var(--gold); border-color: var(--gold); color: var(--night); }
+
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: background 0.4s; }
+    nav.solid .nav-hamburger span { background: var(--night); }
+
+    /* HERO — Portal Veil */
+    .hero {
+      position: relative; width: 100%; height: 100vh; min-height: 600px;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/gallery1.jpg') center center / cover no-repeat;
+    }
+    .hero-veil {
+      position: absolute; inset: 0;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(26,40,24,0.05) 0%,
+        rgba(26,40,24,0.25) 40%,
+        rgba(26,40,24,0.70) 70%,
+        rgba(26,40,24,0.90) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2; text-align: center;
+      padding: 2rem; max-width: 760px;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 0.8s var(--ease) 0.2s forwards;
+    }
+    .hero-name {
+      font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 8vw, 6.5rem);
+      color: var(--white); line-height: 1.0; letter-spacing: -0.02em;
+      margin-bottom: 1.4rem;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.9s var(--ease) 0.4s forwards;
+    }
+    .hero-name em { color: var(--gold-lt); font-style: italic; }
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem); font-weight: 300; line-height: 1.65;
+      color: rgba(244,239,228,0.88); max-width: 560px; margin: 0 auto 2.2rem;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 0.9s var(--ease) 0.65s forwards;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--gold); color: var(--night); text-decoration: none;
+      font-weight: 600; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.9rem 2rem; border-radius: var(--r-btn);
+      opacity: 0; animation: fadeUp 0.9s var(--ease) 0.9s forwards;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .hero-scroll {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: rgba(255,255,255,0.5); font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase; animation: bounce 2s ease infinite 1.5s;
+    }
+    .hero-scroll::after {
+      content: ''; display: block; width: 1px; height: 36px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+    }
+
+    /* SERVICES STRIP */
+    .services {
+      background: var(--night); padding: 5rem 2rem;
+    }
+    .services-inner { max-width: 1100px; margin: 0 auto; }
+    .services-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 3rem; text-align: center;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.04); padding: 3rem 2rem; text-align: center;
+      border: 1px solid rgba(255,255,255,0.07); border-radius: var(--r-card);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .service-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
+    .service-icon { font-size: 2.4rem; margin-bottom: 1.2rem; display: block; }
+    .service-title {
+      font-family: var(--font-display); font-weight: 600; font-size: 1.2rem;
+      color: var(--white); margin-bottom: 0.8rem; line-height: 1.3;
+    }
+    .service-desc {
+      font-size: 0.875rem; font-weight: 300; line-height: 1.7;
+      color: rgba(244,239,228,0.65);
+    }
+
+    /* ANIMAL PROFILES — Tilan asukkaat */
+    .residents {
+      padding: 6rem 2rem; background: var(--cream);
+    }
+    .residents-inner { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-eyebrow {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 1rem; display: block;
+    }
+    .section-title {
+      font-family: var(--font-display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--night); line-height: 1.15;
+    }
+    .residents-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+    .resident-card {
+      background: var(--white); border-radius: var(--r-card);
+      padding: 2.2rem 1.5rem; text-align: center;
+      border: 1px solid var(--cream-dk);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .resident-card:hover { box-shadow: 0 12px 40px rgba(26,40,24,0.10); transform: translateY(-4px); }
+    .resident-circle {
+      width: 80px; height: 80px; border-radius: var(--r-circle);
+      background: var(--cream-dk); margin: 0 auto 1.4rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; border: 3px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--sage-lt);
+    }
+    .resident-name {
+      font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+      color: var(--night); margin-bottom: 0.7rem;
+    }
+    .resident-desc {
+      font-size: 0.82rem; font-weight: 400; line-height: 1.65;
+      color: var(--bark); margin-bottom: 1rem;
+    }
+    .resident-product {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--sage); background: rgba(106,172,80,0.1); padding: 0.3rem 0.8rem;
+      border-radius: 3px; display: inline-block;
+    }
+
+    /* TARINA — Story */
+    .tarina {
+      background: var(--night); padding: 7rem 2rem;
+    }
+    .tarina-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .tarina-photo {
+      border-radius: var(--r-card); overflow: hidden;
+      aspect-ratio: 3/4; position: relative;
+    }
+    .tarina-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .tarina-photo::after {
+      content: ''; position: absolute; inset: 0;
+      border: 1px solid rgba(200,160,64,0.2);
+      border-radius: var(--r-card); pointer-events: none;
+    }
+    .tarina-text .section-eyebrow { text-align: left; }
+    .tarina-text .section-title { text-align: left; color: var(--white); margin-bottom: 1.8rem; }
+    .tarina-body {
+      font-size: 1rem; font-weight: 300; line-height: 1.85;
+      color: rgba(244,239,228,0.78); margin-bottom: 2rem;
+    }
+    .tarina-body p + p { margin-top: 1.2rem; }
+    .tarina-sig {
+      display: flex; align-items: center; gap: 1rem;
+      padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .tarina-sig-circle {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(106,172,80,0.15); border: 2px solid var(--sage);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+    }
+    .tarina-sig-text { font-size: 0.85rem; color: rgba(244,239,228,0.6); line-height: 1.4; }
+    .tarina-sig-name { font-weight: 600; color: var(--gold-lt); }
+
+    /* TUOTTEET — Products */
+    .tuotteet {
+      padding: 6rem 2rem; background: var(--cream-dk);
+    }
+    .tuotteet-inner { max-width: 1100px; margin: 0 auto; }
+    .tuotteet-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem;
+    }
+    .product-card {
+      background: var(--white); border-radius: var(--r-card); overflow: hidden;
+      border: 1px solid rgba(26,40,24,0.08);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .product-card:hover { box-shadow: 0 16px 48px rgba(26,40,24,0.12); transform: translateY(-4px); }
+    .product-photo {
+      height: 220px; overflow: hidden;
+    }
+    .product-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s var(--ease); }
+    .product-card:hover .product-photo img { transform: scale(1.04); }
+    .product-body { padding: 1.8rem 1.6rem; }
+    .product-tag {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.6rem; display: block;
+    }
+    .product-name {
+      font-family: var(--font-display); font-weight: 700; font-size: 1.3rem;
+      color: var(--night); margin-bottom: 0.6rem; line-height: 1.25;
+    }
+    .product-desc {
+      font-size: 0.875rem; font-weight: 300; line-height: 1.65; color: var(--bark);
+    }
+
+    /* GALLERIA */
+    .galleria {
+      background: var(--night); padding: 5rem 0;
+    }
+    .galleria-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); text-align: center; margin-bottom: 2.5rem; padding: 0 2rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 3px;
+    }
+    .gallery-cell { overflow: hidden; }
+    .gallery-cell.span-rows { grid-row: 1 / 3; }
+    .gallery-cell img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.6s var(--ease), opacity 0.3s;
+    }
+    .gallery-cell:hover img { transform: scale(1.04); opacity: 0.9; }
+
+    /* MAJOITUS — Accommodation */
+    .majoitus {
+      padding: 6rem 2rem; background: var(--cream);
+    }
+    .majoitus-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    }
+    .majoitus-text .section-title { text-align: left; margin-bottom: 1.5rem; }
+    .majoitus-text .section-eyebrow { text-align: left; }
+    .majoitus-body {
+      font-size: 1rem; font-weight: 300; line-height: 1.85; color: var(--bark); margin-bottom: 2rem;
+    }
+    .majoitus-features {
+      display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem;
+    }
+    .majoitus-feature {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.875rem; color: var(--night);
+    }
+    .majoitus-feature::before { content: '✓'; color: var(--sage); font-weight: 700; flex-shrink: 0; }
+    .majoitus-photo {
+      border-radius: var(--r-card); overflow: hidden; aspect-ratio: 4/3;
+    }
+    .majoitus-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 2px solid var(--sage); color: var(--sage); text-decoration: none;
+      font-weight: 600; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.85rem 1.8rem; border-radius: var(--r-btn);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--sage); color: var(--white); }
+
+    /* YHTEYSTIEDOT */
+    .yhteystiedot {
+      background: var(--night); padding: 6rem 2rem;
+    }
+    .yhteystiedot-inner {
+      max-width: 900px; margin: 0 auto; text-align: center;
+    }
+    .yhteystiedot .section-title { color: var(--white); margin-bottom: 1.2rem; }
+    .yhteystiedot .section-eyebrow { justify-content: center; display: block; margin-bottom: 1rem; }
+    .contact-intro {
+      font-size: 1.05rem; font-weight: 300; line-height: 1.8;
+      color: rgba(244,239,228,0.72); margin-bottom: 3rem;
+    }
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--r-card); padding: 2rem 1.5rem; text-align: center;
+    }
+    .contact-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+    .contact-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem; display: block;
+    }
+    .contact-value {
+      font-size: 0.95rem; color: var(--white); text-decoration: none;
+      font-weight: 400; line-height: 1.5;
+    }
+    .contact-value:hover { color: var(--gold-lt); }
+    .delivery-area {
+      background: rgba(106,172,80,0.1); border: 1px solid rgba(106,172,80,0.2);
+      border-radius: var(--r-card); padding: 1.8rem 2rem; text-align: left;
+    }
+    .delivery-title {
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: 0.8rem;
+    }
+    .delivery-text {
+      font-size: 0.875rem; color: rgba(244,239,228,0.75); line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bark); padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-left { display: flex; align-items: center; gap: 0.8rem; }
+    .footer-logo { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .footer-name {
+      font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
+      color: var(--cream);
+    }
+    .footer-mid { font-size: 0.78rem; color: rgba(244,239,228,0.5); text-align: center; }
+    .footer-right { font-size: 0.72rem; color: rgba(244,239,228,0.35); font-style: italic; }
+
+    /* MOBILE NAV */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: var(--night); padding: 5rem 2rem 2rem;
+      flex-direction: column; align-items: flex-start; gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display); font-size: 1.8rem; font-weight: 700;
+      color: var(--white); text-decoration: none;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      background: none; border: none; font-size: 1.5rem; color: var(--white); cursor: pointer;
+    }
+    .mobile-lang { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    .mobile-lang button {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white); padding: 0.4rem 0.8rem; border-radius: 3px;
+      font-size: 0.8rem; cursor: pointer;
+    }
+    .mobile-lang button.active { background: var(--gold); border-color: var(--gold); color: var(--night); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-8px); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .residents-grid { grid-template-columns: repeat(2, 1fr); }
+      .tarina-inner, .majoitus-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .tarina-photo { aspect-ratio: 16/9; max-height: 360px; }
+      .tarina-photo img { object-position: center 30%; }
+      .majoitus-photo { aspect-ratio: 16/9; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      nav { padding: 1rem 1.5rem; }
+      .hero-name { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+      .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .tuotteet-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
+      .gallery-cell.span-rows { grid-row: auto; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .residents-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .residents-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .gallery-cell { height: 260px; }
+    }
+  </style>
+</head>
+<body class="lang-fi">
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+    <a href="#palvelut" onclick="closeMobileMenu()"><span class="lang-fi">Palvelut</span><span class="lang-sv">Tjänster</span><span class="lang-en">Services</span></a>
+    <a href="#asukkaat" onclick="closeMobileMenu()"><span class="lang-fi">Asukkaat</span><span class="lang-sv">Invånare</span><span class="lang-en">Residents</span></a>
+    <a href="#tarina" onclick="closeMobileMenu()"><span class="lang-fi">Tarina</span><span class="lang-sv">Berättelse</span><span class="lang-en">Story</span></a>
+    <a href="#tuotteet" onclick="closeMobileMenu()"><span class="lang-fi">Tuotteet</span><span class="lang-sv">Produkter</span><span class="lang-en">Products</span></a>
+    <a href="#yhteystiedot" onclick="closeMobileMenu()"><span class="lang-fi">Yhteystiedot</span><span class="lang-sv">Kontakt</span><span class="lang-en">Contact</span></a>
+    <div class="mobile-lang">
+      <button class="active" onclick="setLang('fi',this)">FI</button>
+      <button onclick="setLang('sv',this)">SV</button>
+      <button onclick="setLang('en',this)">EN</button>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="#" class="nav-logo">
+      <img src="images/logo.jpg" alt="Maagi Metsä">
+      <span class="nav-wordmark">Maagi Metsä</span>
+    </a>
+    <div class="nav-links">
+      <a href="#palvelut"><span class="lang-fi">Palvelut</span><span class="lang-sv">Tjänster</span><span class="lang-en">Services</span></a>
+      <a href="#asukkaat"><span class="lang-fi">Asukkaat</span><span class="lang-sv">Invånare</span><span class="lang-en">Residents</span></a>
+      <a href="#tarina"><span class="lang-fi">Tarina</span><span class="lang-sv">Berättelse</span><span class="lang-en">Story</span></a>
+      <a href="#tuotteet"><span class="lang-fi">Tuotteet</span><span class="lang-sv">Produkter</span><span class="lang-en">Products</span></a>
+      <a href="#yhteystiedot"><span class="lang-fi">Yhteystiedot</span><span class="lang-sv">Kontakt</span><span class="lang-en">Contact</span></a>
+      <div class="lang-btns">
+        <button class="lang-btn active" onclick="setLang('fi',this)">FI</button>
+        <button class="lang-btn" onclick="setLang('sv',this)">SV</button>
+        <button class="lang-btn" onclick="setLang('en',this)">EN</button>
+      </div>
+    </div>
+    <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Valikko">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-veil"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">
+        <span class="lang-fi">Lapinjärvi, Uusimaa</span>
+        <span class="lang-sv">Lappträsk, Nyland</span>
+        <span class="lang-en">Lapinjärvi, Uusimaa</span>
+      </p>
+      <h1 class="hero-name">Maagi&nbsp;<em>Metsä</em></h1>
+      <p class="hero-tagline">
+        <span class="lang-fi">Suomalaisia vuohia, luonnon omaa lihaa ja elämyksiä metsän rauhassa Lapinjärvellä.</span>
+        <span class="lang-sv">Finska getter, naturkött och upplevelser i skogens lugn i Lappträsk.</span>
+        <span class="lang-en">Finnish goats, pasture-raised meat, and forest experiences in peaceful Lapinjärvi.</span>
+      </p>
+      <a href="#palvelut" class="hero-cta">
+        <span class="lang-fi">Tutustu tilaan</span>
+        <span class="lang-sv">Utforska gården</span>
+        <span class="lang-en">Explore the Farm</span>
+        <span>&#8594;</span>
+      </a>
+    </div>
+    <div class="hero-scroll">
+      <span class="lang-fi">Vieritä</span>
+      <span class="lang-sv">Scrolla</span>
+      <span class="lang-en">Scroll</span>
+    </div>
+  </section>
+
+  <!-- SERVICES STRIP -->
+  <section class="services" id="palvelut">
+    <div class="services-inner">
+      <p class="services-label">
+        <span class="lang-fi">Mitä tilalla tapahtuu</span>
+        <span class="lang-sv">Vad händer på gården</span>
+        <span class="lang-en">What happens on the farm</span>
+      </p>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-d1">
+          <span class="service-icon">🥩</span>
+          <h3 class="service-title">
+            <span class="lang-fi">Liha ja maitotuotteet</span>
+            <span class="lang-sv">Kött och mejeriprodukter</span>
+            <span class="lang-en">Meat and Dairy</span>
+          </h3>
+          <p class="service-desc">
+            <span class="lang-fi">Vuohenliha, kaniini, viiriäiset ja kausittaiset linnut suoraan tilalta. Maitotaloustuotteet tulossa.</span>
+            <span class="lang-sv">Getkött, kanin, vaktelar och säsongsfågel direkt från gården. Mejeriprodukter på väg.</span>
+            <span class="lang-en">Goat meat, rabbit, quail, and seasonal birds direct from the farm. Dairy products coming soon.</span>
+          </p>
+        </div>
+        <div class="service-card reveal reveal-d2">
+          <span class="service-icon">🏡</span>
+          <h3 class="service-title">
+            <span class="lang-fi">Maatilamajoitus B&B</span>
+            <span class="lang-sv">Bondgårdsboende B&B</span>
+            <span class="lang-en">Farm Stay B&B</span>
+          </h3>
+          <p class="service-desc">
+            <span class="lang-fi">Yövy maatilalla ja herää metsän rauhaan. Aito kokemus maaseutuelämästä lähellä Helsinkiä.</span>
+            <span class="lang-sv">Övernatta på gården och vakna till skogens lugn. Äkta lantliv nära Helsingfors.</span>
+            <span class="lang-en">Stay on the farm and wake to forest calm. Genuine rural life close to Helsinki.</span>
+          </p>
+        </div>
+        <div class="service-card reveal reveal-d3">
+          <span class="service-icon">🐐</span>
+          <h3 class="service-title">
+            <span class="lang-fi">Eläinpiha</span>
+            <span class="lang-sv">Djurgård</span>
+            <span class="lang-en">Petting Farm</span>
+          </h3>
+          <p class="service-desc">
+            <span class="lang-fi">Tule tapaamaan vuohia, kaneja ja viiriäisiä. Elämys koko perheelle suoraan luonnon äärellä.</span>
+            <span class="lang-sv">Kom och möt getter, kaniner och vaktelar. En upplevelse för hela familjen i naturen.</span>
+            <span class="lang-en">Come meet the goats, rabbits, and quails. A full-family experience right in nature.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TILAN ASUKKAAT -->
+  <section class="residents" id="asukkaat">
+    <div class="residents-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">
+          <span class="lang-fi">Tilan asukkaat</span>
+          <span class="lang-sv">Gårdens invånare</span>
+          <span class="lang-en">Farm Residents</span>
+        </span>
+        <h2 class="section-title">
+          <span class="lang-fi">Elävä maatila,<br>monta tarinaa</span>
+          <span class="lang-sv">En levande gård,<br>många berättelser</span>
+          <span class="lang-en">A living farm,<br>many stories</span>
+        </h2>
+      </div>
+      <div class="residents-grid">
+        <div class="resident-card reveal reveal-d1">
+          <div class="resident-circle">🐐</div>
+          <h3 class="resident-name">
+            <span class="lang-fi">Vuohet</span>
+            <span class="lang-sv">Getter</span>
+            <span class="lang-en">Goats</span>
+          </h3>
+          <p class="resident-desc">
+            <span class="lang-fi">Uteliaat ja ystävälliset, vuohet ovat tilan sydän. Suomalainen rotu sopeutuu luontaisesti kotimaisen metsän ilmastoon.</span>
+            <span class="lang-sv">Nyfikna och vänliga, getterna är gårdens hjärta. Den finska rasen anpassar sig naturligt till det inhemska skogsklimatet.</span>
+            <span class="lang-en">Curious and gentle, the goats are the heart of the farm. The Finnish breed adapts naturally to the local forest climate.</span>
+          </p>
+          <span class="resident-product">
+            <span class="lang-fi">Liha · Maito (tulossa)</span>
+            <span class="lang-sv">Kött · Mjölk (kommer)</span>
+            <span class="lang-en">Meat · Dairy (coming soon)</span>
+          </span>
+        </div>
+        <div class="resident-card reveal reveal-d2">
+          <div class="resident-circle">🐰</div>
+          <h3 class="resident-name">
+            <span class="lang-fi">Kanit</span>
+            <span class="lang-sv">Kaniner</span>
+            <span class="lang-en">Rabbits</span>
+          </h3>
+          <p class="resident-desc">
+            <span class="lang-fi">Pehmeät ja arvokkaat, kanit kasvavat vapaana tilavissa tiloissaan. Puhdas ja maukas proteiininlähde.</span>
+            <span class="lang-sv">Mjuka och värdefulla, kaninerna lever fritt i rymliga utrymmen. En ren och välsmakande proteinkälla.</span>
+            <span class="lang-en">Soft and prized, the rabbits roam freely in spacious housing. A clean, flavourful source of protein.</span>
+          </p>
+          <span class="resident-product">
+            <span class="lang-fi">Kaniinin liha</span>
+            <span class="lang-sv">Kaninkött</span>
+            <span class="lang-en">Rabbit meat</span>
+          </span>
+        </div>
+        <div class="resident-card reveal reveal-d3">
+          <div class="resident-circle">🥚</div>
+          <h3 class="resident-name">
+            <span class="lang-fi">Viiriäiset</span>
+            <span class="lang-sv">Vaktelar</span>
+            <span class="lang-en">Quails</span>
+          </h3>
+          <p class="resident-desc">
+            <span class="lang-fi">Pienet mutta tuottavat, viiriäiset munivatpäivittäin ja antavat herkullista lihaa. Gourmet-herkku suoraan tilalta.</span>
+            <span class="lang-sv">Små men produktiva, vaktelarna värper dagligen och ger välsmakande kött. Gourmetdelikatess direkt från gården.</span>
+            <span class="lang-en">Small but productive, quails lay daily and yield flavourful meat. A gourmet treat straight from the farm.</span>
+          </p>
+          <span class="resident-product">
+            <span class="lang-fi">Munat · Liha</span>
+            <span class="lang-sv">Ägg · Kött</span>
+            <span class="lang-en">Eggs · Meat</span>
+          </span>
+        </div>
+        <div class="resident-card reveal reveal-d4">
+          <div class="resident-circle">🦃</div>
+          <h3 class="resident-name">
+            <span class="lang-fi">Siipikarja</span>
+            <span class="lang-sv">Fjäderfä</span>
+            <span class="lang-en">Seasonal Poultry</span>
+          </h3>
+          <p class="resident-desc">
+            <span class="lang-fi">Kausittainen erikoisuus: peltopyy, fasaani ja kalkkuna. Harvinainen makuelämys kotimaisista metsälinnuista.</span>
+            <span class="lang-sv">Säsongsspecialitet: rapphöna, fasan och kalkon. En sällsynt smakupplevelse från inhemska skogsfåglar.</span>
+            <span class="lang-en">Seasonal specialty: partridge, pheasant, and turkey. A rare culinary treat from Finnish woodland birds.</span>
+          </p>
+          <span class="resident-product">
+            <span class="lang-fi">Sesonkiliha</span>
+            <span class="lang-sv">Säsongskött</span>
+            <span class="lang-en">Seasonal meat</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARINA -->
+  <section class="tarina" id="tarina">
+    <div class="tarina-inner">
+      <div class="tarina-photo reveal">
+        <img src="images/gallery4.jpg" alt="Maagi Metsä — vuohitila Lapinjärvellä">
+      </div>
+      <div class="tarina-text reveal reveal-d2">
+        <span class="section-eyebrow">
+          <span class="lang-fi">Tilan tarina</span>
+          <span class="lang-sv">Gårdens historia</span>
+          <span class="lang-en">The farm's story</span>
+        </span>
+        <h2 class="section-title">
+          <span class="lang-fi">Nuori tila, syvät juuret luonnossa</span>
+          <span class="lang-sv">Ung gård, djupa rötter i naturen</span>
+          <span class="lang-en">A young farm, deep roots in nature</span>
+        </h2>
+        <div class="tarina-body">
+          <span class="lang-fi">
+            <p>Maagi Metsä on nuori vuohitila Lapinjärven rauhaisessa maalaisympäristössä, noin 90 kilometrin päässä Helsingistä. Liisa Rich perusti tilan innokkaana kasvattajana, jonka sydäntä lähellä ovat suomalaiset alkuperäisrodut ja luonnonmukainen tuotanto.</p>
+            <p>Tilan nimi kertoo sen ytimen: Maagi Metsä on paikka, jossa metsä ja arki yhtyvät. Vuohet laiduntavat vapaana, kanit ja viiriäiset elävät tiloissaan luonnollisesti, ja vieraat saavat kokea maatilan arjen omakohtaisesti.</p>
+            <p>Toimitamme tuotteet Helsingin, Loviisan, Kotkan, Kouvolan, Sipoon ja Porvoon alueelle. Ota yhteyttä ja sovitaan toimitus suoraan ovellesi.</p>
+          </span>
+          <span class="lang-sv">
+            <p>Maagi Metsä är en ung getgård i den lugna landsbygdsmiljön i Lappträsk, ungefär 90 kilometer från Helsingfors. Liisa Rich grundade gården som en entusiastisk uppfödare med hjärta för finska ursprungsraser och naturlig produktion.</p>
+            <p>Gårdens namn berättar om dess kärna: Maagi Metsä är en plats där skogen och vardagen möts. Getterna betar fritt, kaninerna och vaktelarna lever naturligt, och gästerna får uppleva gårdens vardag på nära håll.</p>
+            <p>Vi levererar produkter till Helsingfors, Lovisa, Kotka, Kouvola, Sibbo och Borgå-regionen. Kontakta oss för direktleverans till din dörr.</p>
+          </span>
+          <span class="lang-en">
+            <p>Maagi Metsä is a young goat farm in the peaceful countryside of Lapinjärvi, about 90 kilometres from Helsinki. Liisa Rich founded the farm as an enthusiastic breeder with a passion for Finnish native breeds and natural farming.</p>
+            <p>The farm's name says it all: Maagi Metsä is a place where forest and everyday life meet. The goats roam freely, the rabbits and quails live naturally, and guests experience farm life first-hand.</p>
+            <p>We deliver to the Helsinki, Loviisa, Kotka, Kouvola, Sipoo, and Porvoo areas. Get in touch and we will arrange delivery straight to your door.</p>
+          </span>
+        </div>
+        <div class="tarina-sig">
+          <div class="tarina-sig-circle">🌿</div>
+          <div class="tarina-sig-text">
+            <div class="tarina-sig-name">Liisa Rich</div>
+            <span class="lang-fi">Perustaja, Maagi Metsä</span>
+            <span class="lang-sv">Grundare, Maagi Metsä</span>
+            <span class="lang-en">Founder, Maagi Metsä</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TUOTTEET -->
+  <section class="tuotteet" id="tuotteet">
+    <div class="tuotteet-inner">
+      <div class="section-header">
+        <span class="section-eyebrow">
+          <span class="lang-fi">Tilan tuotteet</span>
+          <span class="lang-sv">Gårdens produkter</span>
+          <span class="lang-en">Farm Products</span>
+        </span>
+        <h2 class="section-title">
+          <span class="lang-fi">Luontoa lautasellesi</span>
+          <span class="lang-sv">Natur på din tallrik</span>
+          <span class="lang-en">Nature on your plate</span>
+        </h2>
+      </div>
+      <div class="tuotteet-grid">
+        <div class="product-card reveal reveal-d1">
+          <div class="product-photo">
+            <img src="images/gallery2.jpg" alt="Vuohenliha">
+          </div>
+          <div class="product-body">
+            <span class="product-tag">
+              <span class="lang-fi">Liha</span>
+              <span class="lang-sv">Kött</span>
+              <span class="lang-en">Meat</span>
+            </span>
+            <h3 class="product-name">
+              <span class="lang-fi">Vuohenliha</span>
+              <span class="lang-sv">Getkött</span>
+              <span class="lang-en">Goat Meat</span>
+            </h3>
+            <p class="product-desc">
+              <span class="lang-fi">Suomalainen vuohi kasvaa vapaana metsässä. Liha on vähärasvaista, aromeista ja jäljitettävissä suoraan tähän tilaan. Kaniini, viiriäiset ja sesonkiLinnut myös saatavilla.</span>
+              <span class="lang-sv">Den finska geten lever fritt i skogen. Köttet är magert, aromatiskt och spårbart direkt till denna gård. Kanin, vaktelar och säsongsfågel finns också.</span>
+              <span class="lang-en">The Finnish goat roams freely in the forest. The meat is lean, flavourful and traceable directly to this farm. Rabbit, quail, and seasonal birds also available.</span>
+            </p>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-d2">
+          <div class="product-photo">
+            <img src="images/gallery5.jpg" alt="Viiriäisenmunat">
+          </div>
+          <div class="product-body">
+            <span class="product-tag">
+              <span class="lang-fi">Munat</span>
+              <span class="lang-sv">Ägg</span>
+              <span class="lang-en">Eggs</span>
+            </span>
+            <h3 class="product-name">
+              <span class="lang-fi">Viiriäisenmunat</span>
+              <span class="lang-sv">Vaktelägg</span>
+              <span class="lang-en">Quail Eggs</span>
+            </h3>
+            <p class="product-desc">
+              <span class="lang-fi">Pienet ja ravinteikkaat viiriäisenmunat ovat gourmet-kokkaajan aarreaitta. Tuoreet munat tuottavat päivittäin tilalla vapaana elävistä viiriäisistä.</span>
+              <span class="lang-sv">Små och näringsrika vaktelägg är gourmatkockarnas skattkammare. Färska ägg produceras dagligen av frigående vaktelar på gården.</span>
+              <span class="lang-en">Small and nutrient-rich quail eggs are a gourmet cook's treasure. Fresh eggs produced daily by free-range quails on the farm.</span>
+            </p>
+          </div>
+        </div>
+        <div class="product-card reveal reveal-d3">
+          <div class="product-photo">
+            <img src="images/gallery3.jpg" alt="Maatilamajoitus">
+          </div>
+          <div class="product-body">
+            <span class="product-tag">
+              <span class="lang-fi">Majoitus</span>
+              <span class="lang-sv">Boende</span>
+              <span class="lang-en">Stay</span>
+            </span>
+            <h3 class="product-name">
+              <span class="lang-fi">B&B Maagi Metsä</span>
+              <span class="lang-sv">B&B Maagi Metsä</span>
+              <span class="lang-en">B&B Maagi Metsä</span>
+            </h3>
+            <p class="product-desc">
+              <span class="lang-fi">Yövy tilalla ja koe aito maatila-arki. Aamupala tuoreen tilan antimista, eläimiä tapaamassa aamulla ja metsän rauha ympärillä.</span>
+              <span class="lang-sv">Övernatta på gården och upplev äkta gårdsliv. Frukost med färska gårdsprodukter, djur att hälsa på om morgonen och skogens lugn runt om.</span>
+              <span class="lang-en">Stay on the farm and experience genuine farm life. Breakfast with fresh farm produce, animals to greet in the morning, and forest calm all around.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERIA -->
+  <section class="galleria">
+    <p class="galleria-label">
+      <span class="lang-fi">Maagi Metsä kuvina</span>
+      <span class="lang-sv">Maagi Metsä i bilder</span>
+      <span class="lang-en">Maagi Metsä in pictures</span>
+    </p>
+    <div class="gallery-grid">
+      <div class="gallery-cell span-rows">
+        <img src="images/gallery1.jpg" alt="Maagi Metsä — vuohitila">
+      </div>
+      <div class="gallery-cell">
+        <img src="images/gallery2.jpg" alt="Tilan eläimet">
+      </div>
+      <div class="gallery-cell">
+        <img src="images/gallery5.jpg" alt="Maagi Metsä luonto">
+      </div>
+      <div class="gallery-cell">
+        <img src="images/gallery4.jpg" alt="Tilan maisema">
+      </div>
+      <div class="gallery-cell">
+        <img src="images/gallery3.jpg" alt="Lapinjärven maisema">
+      </div>
+    </div>
+  </section>
+
+  <!-- MAJOITUS -->
+  <section class="majoitus" id="majoitus">
+    <div class="majoitus-inner">
+      <div class="majoitus-text reveal">
+        <span class="section-eyebrow">
+          <span class="lang-fi">Maatilamajoitus</span>
+          <span class="lang-sv">Bondgårdsboende</span>
+          <span class="lang-en">Farm Accommodation</span>
+        </span>
+        <h2 class="section-title">
+          <span class="lang-fi">Yövy metsän sylissä</span>
+          <span class="lang-sv">Sov i skogens famn</span>
+          <span class="lang-en">Sleep in the forest's embrace</span>
+        </h2>
+        <p class="majoitus-body">
+          <span class="lang-fi">Maagi Metsän B&B tarjoaa aidon maatilakokemuksen Lapinjärven hiljaisessa maalaisympäristössä. Vain noin 90 minuutin ajomatka Helsingistä, mutta kokonaan eri maailma.</span>
+          <span class="lang-sv">Maagi Metsäs B&B erbjuder en äkta gårdsupplevelse i den lugna landsbygden i Lappträsk. Bara cirka 90 minuters körning från Helsingfors, men en helt annan värld.</span>
+          <span class="lang-en">Maagi Metsä B&B offers a genuine farm experience in the quiet countryside of Lapinjärvi. Just about 90 minutes from Helsinki, but a completely different world.</span>
+        </p>
+        <div class="majoitus-features">
+          <div class="majoitus-feature">
+            <span class="lang-fi">Rauhallinen sijainti luonnon äärellä</span>
+            <span class="lang-sv">Lugnt läge nära naturen</span>
+            <span class="lang-en">Peaceful location surrounded by nature</span>
+          </div>
+          <div class="majoitus-feature">
+            <span class="lang-fi">Aamiainen tilan tuotteista</span>
+            <span class="lang-sv">Frukost med gårdens produkter</span>
+            <span class="lang-en">Breakfast with farm-fresh products</span>
+          </div>
+          <div class="majoitus-feature">
+            <span class="lang-fi">Mahdollisuus tutustua eläimiin</span>
+            <span class="lang-sv">Möjlighet att bekanta sig med djuren</span>
+            <span class="lang-en">Opportunity to meet the farm animals</span>
+          </div>
+          <div class="majoitus-feature">
+            <span class="lang-fi">Soveltuu perheille ja pariskunnille</span>
+            <span class="lang-sv">Passar familjer och par</span>
+            <span class="lang-en">Suitable for families and couples</span>
+          </div>
+        </div>
+        <a href="https://www.facebook.com/people/Vuohitila-Maagi-Mets%C3%A4/61565899453552/" target="_blank" rel="noopener" class="btn-outline">
+          <span class="lang-fi">Kysy varauksesta</span>
+          <span class="lang-sv">Fråga om bokning</span>
+          <span class="lang-en">Enquire about booking</span>
+          <span>&#8599;</span>
+        </a>
+      </div>
+      <div class="majoitus-photo reveal reveal-d2">
+        <img src="images/gallery2.jpg" alt="Maagi Metsä majoitus">
+      </div>
+    </div>
+  </section>
+
+  <!-- YHTEYSTIEDOT -->
+  <section class="yhteystiedot" id="yhteystiedot">
+    <div class="yhteystiedot-inner">
+      <span class="section-eyebrow">
+        <span class="lang-fi">Ota yhteyttä</span>
+        <span class="lang-sv">Kontakta oss</span>
+        <span class="lang-en">Get in touch</span>
+      </span>
+      <h2 class="section-title">
+        <span class="lang-fi">Tule tutustumaan tai tee tilaus</span>
+        <span class="lang-sv">Kom på besök eller beställ</span>
+        <span class="lang-en">Visit us or place an order</span>
+      </h2>
+      <p class="contact-intro">
+        <span class="lang-fi">Tavoitat meidät puhelimitse, WhatsAppin kautta tai Facebookin välityksellä. Toimitamme tuotteet laajalla alueella Uudellamaalla ja lähimaakunnissa.</span>
+        <span class="lang-sv">Nå oss via telefon, WhatsApp eller Facebook. Vi levererar produkter i ett brett område i Nyland och angränsande landskap.</span>
+        <span class="lang-en">Reach us by phone, WhatsApp, or Facebook. We deliver products across a wide area in Uusimaa and neighbouring regions.</span>
+      </p>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span class="contact-icon">📞</span>
+          <span class="contact-label">
+            <span class="lang-fi">Puhelin / WhatsApp</span>
+            <span class="lang-sv">Telefon / WhatsApp</span>
+            <span class="lang-en">Phone / WhatsApp</span>
+          </span>
+          <a href="tel:+358503781025" class="contact-value">050 3781025</a>
+        </div>
+        <div class="contact-card">
+          <span class="contact-icon">📍</span>
+          <span class="contact-label">
+            <span class="lang-fi">Osoite</span>
+            <span class="lang-sv">Adress</span>
+            <span class="lang-en">Address</span>
+          </span>
+          <span class="contact-value">Alasuurintie 48<br>07810 Lapinjärvi</span>
+        </div>
+        <div class="contact-card">
+          <span class="contact-icon">📘</span>
+          <span class="contact-label">Facebook</span>
+          <a href="https://www.facebook.com/people/Vuohitila-Maagi-Mets%C3%A4/61565899453552/" target="_blank" rel="noopener" class="contact-value">Vuohitila Maagi Metsä</a>
+        </div>
+      </div>
+      <div class="delivery-area">
+        <p class="delivery-title">
+          <span class="lang-fi">Toimitusalue</span>
+          <span class="lang-sv">Leveransområde</span>
+          <span class="lang-en">Delivery area</span>
+        </p>
+        <p class="delivery-text">
+          <span class="lang-fi">Helsinki, Loviisa, Kotka, Kouvola, Sipoo, Porvoo ja lähialueet. Soita tai laita viestiä niin sovitaan toimitus.</span>
+          <span class="lang-sv">Helsingfors, Lovisa, Kotka, Kouvola, Sibbo, Borgå och angränsande områden. Ring eller skicka meddelande så ordnar vi leveransen.</span>
+          <span class="lang-en">Helsinki, Loviisa, Kotka, Kouvola, Sipoo, Porvoo, and nearby areas. Call or message us and we will arrange delivery.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="images/logo.jpg" alt="Maagi Metsä" class="footer-logo">
+        <span class="footer-name">Maagi Metsä</span>
+      </div>
+      <div class="footer-mid">
+        <span class="lang-fi">Vuohitila · Lapinjärvi, Uusimaa · 050 3781025</span>
+        <span class="lang-sv">Getgård · Lappträsk, Nyland · 050 3781025</span>
+        <span class="lang-en">Goat Farm · Lapinjärvi, Uusimaa · 050 3781025</span>
+      </div>
+      <div class="footer-right">Demo, designed by Anton Jalonen</div>
+    </div>
+  </footer>
+
+  <script>
+    // LANGUAGE
+    function setLang(lang, btn) {
+      document.body.className = 'lang-' + lang;
+      localStorage.setItem('mm-lang', lang);
+      document.querySelectorAll('.lang-btn, .mobile-lang button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.lang-btn, .mobile-lang button').forEach(b => {
+        if (b.textContent.trim().toLowerCase() === lang) b.classList.add('active');
+      });
+      const titles = {
+        fi: 'Vuohitila Maagi Metsä — Lapinjärvi, Uusimaa',
+        sv: 'Getgård Maagi Metsä — Lappträsk, Nyland',
+        en: 'Maagi Metsä Goat Farm — Lapinjärvi, Uusimaa'
+      };
+      document.title = titles[lang];
+    }
+    (function() {
+      const saved = localStorage.getItem('mm-lang');
+      if (saved && ['fi','sv','en'].includes(saved)) setLang(saved, null);
+    })();
+
+    // NAV SCROLL
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 60);
+    });
+
+    // MOBILE MENU
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+    // REVEAL ON SCROLL
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
